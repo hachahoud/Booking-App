@@ -1,0 +1,21 @@
+<!DOCTYPE html >
+<html>
+
+<head>
+	<title>Bookings 2.0</title>
+</head>
+
+<body>
+
+	<h2>Login to your account.</h2>
+	<form method='post' action="{% url 'users:login' %}">
+		{% csrf_token %}
+		{{ form.as_p }}
+		<button name='submit'>Log in</button>
+		<input type='hidden' name='next' value="{% url 'bookings:home' %}">
+	</form>
+
+</body>
+
+
+</html>

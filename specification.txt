@@ -1,0 +1,1 @@
+This is a one page web-app. It will allow users to make reservations. A user should be able to see the hours that had already been booked, and the available ones, then make his reservation.

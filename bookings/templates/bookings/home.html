@@ -1,0 +1,29 @@
+{% extends "bookings/base.html" %}
+
+{% block content %}
+
+	<h2>Welcome To Your Booking Page.</h2>
+	{% if user.is_authenticated %}
+
+	<ul>
+		{% for day in days %}
+		<li>
+
+			<h3>
+				<a href="{% url 'bookings:hours' day.date %}">{{ day.date }}</a>
+			</h3>
+		
+		</li>
+		{% empty %}
+			<li>No bookings have been made yet.</li>
+		{% endfor %}
+	</ul>
+
+	{% else %}
+		<h2>
+			<a href="{% url 'users:register' %}">Register</a> now to make reservations.
+			Or <a href="{% url 'users:login' %}">Log in</a> to your account.
+		</h2>
+	{% endif %}
+
+{% endblock content %}

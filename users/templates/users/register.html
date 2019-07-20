@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Register to your Booking app</title>
+</head>
+
+<body>
+
+	<h2>Register for an account now.</h2>
+	<form method='post' action="{% url 'users:register' %}">
+		{% csrf_token %}
+		{{ form.as_p }}
+
+		<button name='submit'>Register</button>
+		<input type='hidden' name='next' value="{% url 'bookings:date' %}">
+
+	</form>
+
+</body>
+
+
+</html>

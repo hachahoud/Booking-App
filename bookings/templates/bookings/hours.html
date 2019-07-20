@@ -1,0 +1,14 @@
+{% extends "bookings/base.html" %}
+
+{% block content %}
+
+<h2>Select the hours to book.</h2>
+
+<form method='post' action="{% url 'bookings:hours' date %}">
+	{% csrf_token %}
+	{{ form.as_p }}
+	<button name='submit'>Submit</button> -
+		<a href="{% url 'bookings:home' %}">Cancel</a>
+</form>
+
+{% endblock content %}

@@ -37,10 +37,12 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    # my apps
-    'bookings',
     # local
     'users.apps.UsersConfig',
+    # third party.
+    'bootstrap4',
+    # my apps
+    'bookings'
 ]
 
 MIDDLEWARE = [
@@ -58,7 +60,7 @@ ROOT_URLCONF = 'booking.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -125,3 +127,4 @@ STATIC_URL = '/static/'
 LOGIN_URL = '/users/login'
 
 AUTH_USER_MODEL = 'users.CustomUser'
+

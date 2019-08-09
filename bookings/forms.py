@@ -7,7 +7,7 @@ from .models import Day, Hours
 class DayForm(forms.ModelForm):
 	class Meta:
 		model = Day
-		fields = ['firstname','lastname','date']
+		fields = ['date']
 		#labels = {'firstname':'','lastname':'','datetime':''}
 		widgets = {'date':forms.SelectDateWidget()}
 

@@ -1,21 +1,18 @@
-<!DOCTYPE html >
-<html>
+{% extends "bookings/base.html" %}
+{% load bootstrap4 %}
 
-<head>
-	<title>Bookings 2.0</title>
-</head>
-
-<body>
-
+{% block header %}
 	<h2>Login to your account.</h2>
-	<form method='post' action="{% url 'users:login' %}">
+{% endblock header %}
+
+{% block content %}
+	<form class="form" method='post' action="{% url 'users:login' %}">
 		{% csrf_token %}
-		{{ form.as_p }}
-		<button name='submit'>Log in</button>
+		{% bootstrap_form form %}
+		{% buttons %}
+			<button class="btn btn-primary" name='submit'>Log in</button>
+		{% endbuttons %}
 		<input type='hidden' name='next' value="{% url 'bookings:home' %}">
 	</form>
 
-</body>
-
-
-</html>
+{% endblock content %}

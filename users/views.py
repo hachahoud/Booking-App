@@ -4,6 +4,7 @@ from django.urls import reverse
 from .forms import CustomUserCreationForm
 from django.contrib.auth import login, logout, authenticate
 from django.contrib.auth.decorators import login_required
+from django.contrib import messages
 
 # Create your views here.
 
@@ -18,6 +19,7 @@ def register(request):
 			authenticated_user = authenticate(username=new_user.username,
 				password=request.POST['password1'])
 			login(request, authenticated_user)
+			messages.add_message(request,messages.SUCCESS, "You have registered successfully!")
 			return HttpResponseRedirect(reverse("bookings:date"))
 
 	context = {'form':form}

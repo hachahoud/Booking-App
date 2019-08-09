@@ -1,14 +1,19 @@
 {% extends "bookings/base.html" %}
+{% load bootstrap4 %}
 
 {% block content %}
 
 <h2>Select the hours to book.</h2>
-
-<form method='post' action="{% url 'bookings:hours' date %}">
-	{% csrf_token %}
-	{{ form.as_p }}
-	<button name='submit'>Submit</button> -
-		<a href="{% url 'bookings:home' %}">Cancel</a>
-</form>
-
+<div class="mb-5">
+	<form class="form" method='post' action="{% url 'bookings:hours' date %}">
+		{% csrf_token %}
+		{% bootstrap_form form %}
+		{% buttons %}
+			<button class="btn btn-success" name='submit'>Submit</button> -
+			
+			<a href="{% url 'bookings:home' %}" role='button'>
+				<button type="button" class="btn btn-secondary">Cancel</button></a>
+		{% endbuttons %}
+	</form>
+</div>
 {% endblock content %}

@@ -1,23 +1,33 @@
 {% extends "bookings/base.html" %}
+{% block header %}
+<div class="jumbotron">
+	<h1 class="display-4">Marhba to your bookings.</h1>
+</div>
+{% endblock header %}
 
 {% block content %}
 
-	<h2>Welcome To Your Booking Page.</h2>
 	{% if user.is_authenticated %}
 
-	<ul>
 		{% for day in days %}
-		<li>
+		<h4>Reservations:</h4>
+			<div class="card m-3">
+				<h5 class="card-header">{{ day.date }}</h5>
 
-			<h3>
-				<a href="{% url 'bookings:hours' day.date %}">{{ day.date }}</a>
-			</h3>
-		
-		</li>
+					<div class="card-body">
+						<span>You have reserved {{day.reserved}} hours.</span>
+						<form action="{% url 'bookings:delete-book' day.date %}" method='POST'>
+							{% csrf_token %}
+							<input class="btn btn-outline-danger btn-sm mt-1" type='submit' value='Delete'/>
+						</form>
+					</div>
+
+			</div>
+
 		{% empty %}
-			<li>No bookings have been made yet.</li>
+			<text>No bookings have been made yet.</text>
 		{% endfor %}
-	</ul>
+	
 
 	{% else %}
 		<h2>
